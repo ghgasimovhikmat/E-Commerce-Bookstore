@@ -1,3 +1,5 @@
+using BulkyBook.Business;
+using BulkyBook.Business.Service.IService;
 using BulkyBook.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnection"));
-});
+}); 
+builder.Services.AddScoped<ICatagoryService, CategoryService>();
 
 var app = builder.Build();
 
@@ -27,9 +30,16 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+
+app.MapControllerRoute(
+    name: "MyArea",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Home}/{action=Index}/{id?}",
+    defaults:new { area = "Customer"})
     .WithStaticAssets();
 
 
