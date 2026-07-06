@@ -8,19 +8,19 @@ using Microsoft.AspNetCore.Mvc;
 namespace BulkyBookWeb.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    public class CategoryController : Controller
+    public class ProductController : Controller
     {
 
-        private readonly ICatagoryService _catagoryService;
+        private readonly IProductService _productService;
 
-        public CategoryController(ICatagoryService catagoryService)
+        public ProductController(IProductService productService)
         {
-            _catagoryService = catagoryService;
+            _productService = productService;
         }
         public async Task<IActionResult> Index()
         {
-            var categories = await _catagoryService.GetAllCategoriesAsync();
-            return View(categories);
+            var products = await _productService.GetAllProductsAsync();
+            return View(products);
         }
         public async Task<IActionResult> Create()
         {
@@ -30,19 +30,15 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Create")]
-        public async Task<IActionResult> CreatePOST(Category category)
+        public async Task<IActionResult> CreatePOST(Product product)
         {
 
-            if (!String.IsNullOrEmpty(category.Name) && !await _catagoryService.IsCategoryNameUniqueAsync(category.Name, category.Id))
-            {
-                ModelState.AddModelError("", "Category already exists");
-            }
 
             if (ModelState.IsValid)
             {
-                await _catagoryService.CreateCategoryAsync(category);
+                await  _productService.CreateProductAsync(product);
                
-                TempData["success"] = "Category created successfully";
+                TempData["success"] = "Product created successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -54,7 +50,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             {
                 return NotFound();
             }
-            var category = await _catagoryService.GetCategoryByIdAsync(Id.Value);
+            var category = await  _productService.GetProductByIdAsync(Id.Value);
             if (category == null)
             {
                 return NotFound();
@@ -64,19 +60,15 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Update")]
-        public async Task <IActionResult> UpdatePOST(Category category)
+        public async Task <IActionResult> UpdatePOST(Product product)
         {
 
-            if (!String.IsNullOrEmpty(category.Name) && !await _catagoryService.IsCategoryNameUniqueAsync(category.Name,category.Id))
-            {
-                ModelState.AddModelError("", "Category already exists");
-            }
 
             if (ModelState.IsValid)
             {
-                await _catagoryService.UpdateCategoryAsync(category);
+                await  _productService.UpdateProductAsync(product);
 
-                TempData["success"] = "Category updated successfully";
+                TempData["success"] = "Productupdated successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -89,7 +81,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             {
                 return NotFound();
             }
-            var category = await _catagoryService.GetCategoryByIdAsync(Id.Value);
+            var category = await  _productService.GetProductByIdAsync(Id.Value);
             if (category == null)
             {
                 return NotFound();
@@ -102,14 +94,14 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DeletePOST(int Id)
         {
-            var category = await _catagoryService.GetCategoryByIdAsync(Id);
-            if (category == null)
+            var product = await  _productService.GetProductByIdAsync(Id);
+            if (product == null)
             {
                 return NotFound();
             }
-            await _catagoryService.DeleteCategoryAsync(Id);
+            await  _productService.DeleteProductAsync(Id);
 
-            TempData["success"] = "Category deleted successfully";
+            TempData["success"] = "Product deleted successfully";
             return RedirectToAction("Index");
         }
 
