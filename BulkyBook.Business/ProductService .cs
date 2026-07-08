@@ -33,10 +33,21 @@ namespace BulkyBook.Business
             await _context.SaveChangesAsync();
         }
 
-             public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<Product>> GetAllProductsAsync(bool includeCategory = false)
         {
-            return await _context.Products.ToListAsync();
+          
+            if (includeCategory)
+            {
+                return await _context.Products.Include(e => e.Category).ToListAsync();
+            }
+            else
+            {
+                return await _context.Products.ToListAsync();
+            }
+
         }
+
+
 
         public async Task<Product?> GetProductByIdAsync(int id)
         {
