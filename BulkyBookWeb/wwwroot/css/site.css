@@ -12,6 +12,21 @@
     transition: background 0.2s, box-shadow 0.2s;
 }
 
+/* Polished form inputs */
+.form-control,
+.form-select {
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #17A34A;
+        box-shadow: 0 0 0 3px rgba(23, 163, 74, 0.12);
+    }
     .btn-accent:hover, .btn-accent:focus {
         background: #138a3e;
         color: #fff;
