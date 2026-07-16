@@ -1,3 +1,4 @@
+using BulkyBook.Business.Service.IService;
 using BulkyBookWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -7,13 +8,25 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
     [Area("Customer")]
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IProductService _productService;
+        public HomeController(IProductService productService)
         {
-            return View();
+            _productService = productService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var products = await _productService.GetAllProductsAsync(includeCategory: true);
+            return View(products);
+        }
+        public async Task<IActionResult> Details(int productId)
+        {
+            var product = await _productService.GetProductByIdAsync(productId, includeCategory: true);
+            return View(product);
         }
 
-        public IActionResult Privacy()
-        {
+
+        public async Task<IActionResult> Privacy()
+        {           
             return View();
         }
 

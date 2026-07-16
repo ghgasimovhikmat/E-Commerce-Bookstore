@@ -7,9 +7,9 @@ using BulkyBookWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace BulkyBookWeb.Areas.Customer.Controllers
+namespace BulkyBookWeb.Areas.Admin.Controllers
 {
-    [Area("Customer")]
+    [Area("Admin")]
     public class ProductController : Controller
     {
 
@@ -112,42 +112,44 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
            
 
         }
-         public async Task<IActionResult> Delete(int? Id)
-        {
-            if (Id == null || Id == 0)
-            {
-                return NotFound();
-            }
-            var category = await  _productService.GetProductByIdAsync(Id.Value);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return View(category);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeletePOST(int Id)
-        {
-            var product = await  _productService.GetProductByIdAsync(Id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            await  _productService.DeleteProductAsync(Id);
-
-            TempData["success"] = "Product deleted successfully";
-            return RedirectToAction("Index");
-        }
-
-      
+            
         #region API Calls
         public async Task<IActionResult> GetAll()
         {
             var products = await _productService.GetAllProductsAsync(true);
             return Json(new { data = products });
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return Json(new { success = false, message = "Invalid ID" });
+            }
+
+            var productToBeDeleted = await _productService.GetProductByIdAsync(id.Value);
+            if (productToBeDeleted == null)
+            {
+                return Json(new { success = false, message = "Error while deleting" });
+            }
+
+            //delete product image if that exists
+            if (!string.IsNullOrEmpty(productToBeDeleted.ImageUrl))
+            {
+                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, productToBeDeleted.ImageUrl.TrimStart('\\', '/'));
+
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+            }
+
+
+            await _productService.DeleteProductAsync(id.Value);
+            return Json(new { success = true, message = "Delete Successful" });
+
+
         }
         #endregion
     }
