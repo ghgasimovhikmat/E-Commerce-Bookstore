@@ -36,7 +36,7 @@ namespace BulkyBookWeb.Areas.Identity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVM loginVM, string? returnUrl = null)
         {
-            if (ModelState.IsValid)  //Hugo@123@ - hugo@mail.com 0 admin@mail.com  // customer@mail.com - Customer@123@ - customer1@mail.com - Customer@1123@
+            if (ModelState.IsValid)  //Hugo@123@ - hugo@mail.com / admin@mail.com  // customer@mail.com - Customer@123@ - customer1@mail.com - Customer@1123@
             {
                 var result = await _signInManager.PasswordSignInAsync(loginVM.Email, loginVM.Password, loginVM.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
