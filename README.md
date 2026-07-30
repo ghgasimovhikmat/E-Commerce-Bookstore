@@ -136,5 +136,4 @@ This project is available for educational and portfolio purposes.
 
 ## 👨‍💻 Author
 
-**Built by [Your Name]**
-_[Add a short line about your role/background, and links to your portfolio/LinkedIn/GitHub]_
+**Built by [Hikmat Gasimov]**
