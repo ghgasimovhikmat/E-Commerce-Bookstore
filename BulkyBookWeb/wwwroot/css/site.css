@@ -1,24 +1,35 @@
 /* ============================================
+   Brand Palette
+   ============================================ */
+:root {
+    --brand-navy-900: #0B1220;
+    --brand-navy-800: #131B2E;
+    --brand-accent: #0F766E;
+    --brand-accent-hover: #0B5D57;
+    --brand-accent-light: #2DD4BF;
+}
+
+/* ============================================
    Layout — Nav, Footer, Cards, Buttons
    ============================================ */
 .btn-glow:hover {
-    box-shadow: 0 0 20px rgba(23, 163, 74, 0.4);
+    box-shadow: 0 0 20px rgba(15, 118, 110, 0.4);
 }
 
-/* Primary green button — !important ensures this always wins regardless
+/* Primary accent button — !important ensures this always wins regardless
    of stylesheet load order (Bootstrap's .btn base styles otherwise win ties) */
 .btn-accent {
-    background: #17A34A !important;
-    border-color: #17A34A !important;
+    background: #0F766E !important;
+    border-color: #0F766E !important;
     color: #fff !important;
     transition: background 0.2s, box-shadow 0.2s;
 }
 
     .btn-accent:hover, .btn-accent:focus {
-        background: #138a3e !important;
-        border-color: #138a3e !important;
+        background: #0B5D57 !important;
+        border-color: #0B5D57 !important;
         color: #fff !important;
-        box-shadow: 0 0 16px rgba(23, 163, 74, 0.35);
+        box-shadow: 0 0 16px rgba(15, 118, 110, 0.35);
     }
 
 /* Polished form inputs */
@@ -33,13 +44,13 @@
 
     .form-control:focus,
     .form-select:focus {
-        border-color: #17A34A;
-        box-shadow: 0 0 0 3px rgba(23, 163, 74, 0.12);
+        border-color: #0F766E;
+        box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
     }
 
 /* Admin / management panel headers (Category, Product, etc.) */
 .panel-header {
-    background: linear-gradient(120deg, #065f46 0%, #282828 60%, #191414 100%);
+    background: linear-gradient(120deg, #0F766E 0%, #131B2E 60%, #0B1220 100%);
     color: #fff;
 }
 
@@ -47,11 +58,11 @@
     width: 42px;
     height: 42px;
     border-radius: 0.65rem;
-    background: rgba(23, 163, 74, 0.18);
+    background: rgba(15, 118, 110, 0.18);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #1DB954;
+    color: #2DD4BF;
     font-size: 1.15rem;
     flex-shrink: 0;
 }
@@ -103,7 +114,7 @@
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: #17A34A;
+    color: #0F766E;
     margin-bottom: 0.35rem;
 }
 
@@ -150,7 +161,7 @@
     left: 0.75rem;
     z-index: 2;
     background: rgba(255, 255, 255, 0.95);
-    color: #17A34A;
+    color: #0F766E;
     font-weight: 700;
     font-size: 0.63rem;
     text-transform: uppercase;
@@ -161,7 +172,7 @@
 }
 
 .book-price {
-    color: #17A34A;
+    color: #0F766E;
     font-weight: 800;
     font-size: 1.05rem;
 }
@@ -175,7 +186,7 @@
 .book-view-btn {
     border-radius: 999px;
     border: 1px solid #e2e8f0;
-    color: #191414;
+    color: #0B1220;
     font-weight: 600;
     font-size: 0.78rem;
     padding: 0.4rem 0.9rem;
@@ -183,18 +194,18 @@
 }
 
     .book-view-btn:hover {
-        background: #17A34A;
-        border-color: #17A34A;
+        background: #0F766E;
+        border-color: #0F766E;
         color: #fff;
     }
 
 .book-title-link {
-    color: #191414;
+    color: #0B1220;
     transition: color 0.15s;
 }
 
     .book-title-link:hover {
-        color: #17A34A;
+        color: #0F766E;
     }
 
 /* Click animation for book cards */
@@ -277,11 +288,11 @@
 }
 
     .cart-item:hover {
-        background: rgba(23, 163, 74, 0.03);
+        background: rgba(15, 118, 110, 0.03);
     }
 
 [data-bs-theme="dark"] .cart-item:hover {
-    background: rgba(23, 163, 74, 0.08);
+    background: rgba(15, 118, 110, 0.08);
 }
 
 /* ============================================
@@ -297,7 +308,7 @@
 
 .auth-brand-panel {
     position: relative;
-    background: linear-gradient(155deg, #065f46 0%, #282828 55%, #191414 100%);
+    background: linear-gradient(155deg, #0F766E 0%, #131B2E 55%, #0B1220 100%);
     color: #fff;
     padding: 3rem 2.75rem;
     display: flex;
@@ -312,7 +323,7 @@
         content: "";
         position: absolute;
         border-radius: 50%;
-        background: rgba(23, 163, 74, 0.25);
+        background: rgba(15, 118, 110, 0.25);
         filter: blur(50px);
         pointer-events: none;
     }
@@ -329,7 +340,7 @@
         height: 260px;
         bottom: -100px;
         left: -80px;
-        background: rgba(6, 95, 70, 0.35);
+        background: rgba(17, 94, 89, 0.35);
     }
 
 .auth-brand-logo {
@@ -376,7 +387,7 @@
     }
 
     .auth-brand-features i {
-        color: #1DB954;
+        color: #2DD4BF;
         font-size: 1rem;
     }
 
@@ -392,13 +403,13 @@
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: #17A34A;
+    color: #0F766E;
     margin-bottom: 0.35rem;
 }
 
 .auth-form-panel h3 {
     font-weight: 700;
-    color: #191414;
+    color: #0B1220;
     margin-bottom: 1.75rem;
 }
 
@@ -547,8 +558,8 @@ div.dt-container {
 
             .dataTables_wrapper .dataTables_filter input:focus,
             div.dt-container div.dt-search input:focus {
-                border-color: #17A34A;
-                box-shadow: 0 0 0 3px rgba(23, 163, 74, 0.12);
+                border-color: #0F766E;
+                box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
                 background: #fff;
             }
 
@@ -573,8 +584,8 @@ div.dt-container {
             .dataTables_wrapper .dataTables_length select:focus,
             div.dt-container div.dt-length select:focus,
             div.dt-container select.dt-input:focus {
-                border-color: #17A34A !important;
-                box-shadow: 0 0 0 3px rgba(23, 163, 74, 0.12) !important;
+                border-color: #0F766E !important;
+                box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12) !important;
                 background-color: #fff !important;
             }
 
@@ -591,8 +602,8 @@ div.dt-container {
     }
 
         div.dt-container input.dt-input:focus {
-            border-color: #17A34A !important;
-            box-shadow: 0 0 0 3px rgba(23, 163, 74, 0.12) !important;
+            border-color: #0F766E !important;
+            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12) !important;
             background: #fff !important;
         }
 
@@ -652,7 +663,7 @@ table.dataTable {
         table.dataTable thead th:active,
         table.dataTable thead th.sorting_asc,
         table.dataTable thead th.sorting_desc {
-            color: #17A34A;
+            color: #0F766E;
         }
 
     table.dataTable tbody td {
@@ -683,7 +694,7 @@ table.dataTable {
     table.dataTable thead .sorting_asc::before,
     table.dataTable thead .sorting_desc::after {
         opacity: 0.8;
-        color: #17A34A;
+        color: #0F766E;
     }
 
 .dataTables_wrapper .dataTables_paginate,
@@ -707,22 +718,22 @@ div.dt-container div.dt-paging {
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
         div.dt-container div.dt-paging button.dt-paging-button:hover {
             background: #f1f5f9 !important;
-            color: #17A34A !important;
-            border-color: #17A34A !important;
+            color: #0F766E !important;
+            border-color: #0F766E !important;
         }
 
         .dataTables_wrapper .dataTables_paginate .paginate_button.current,
         div.dt-container div.dt-paging button.dt-paging-button.current {
-            background: #17A34A !important;
+            background: #0F766E !important;
             color: #fff !important;
-            border-color: #17A34A !important;
+            border-color: #0F766E !important;
             font-weight: 600;
         }
 
             .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
             div.dt-container div.dt-paging button.dt-paging-button.current:hover {
-                background: #15803D !important;
-                border-color: #15803D !important;
+                background: #0B5D57 !important;
+                border-color: #0B5D57 !important;
                 color: #fff !important;
             }
 
@@ -887,9 +898,9 @@ div.dt-container div.dt-info {
         }
 
         .note-editor .note-toolbar .note-btn-group .note-btn.active {
-            background: #17A34A !important;
+            background: #0F766E !important;
             color: #fff !important;
-            border-color: #17A34A !important;
+            border-color: #0F766E !important;
         }
 
 .note-editor .note-editing-area .note-editable {
@@ -923,7 +934,7 @@ div.dt-container div.dt-info {
 
     .note-editor .note-dropdown-menu .note-dropdown-item:hover {
         background: #f1f5f9 !important;
-        color: #17A34A !important;
+        color: #0F766E !important;
     }
 
 /* ============================================
@@ -939,12 +950,12 @@ div.dt-container div.dt-info {
     }
 
     [data-bs-theme="dark"] header .navbar {
-        background: #0a0a0a !important;
+        background: #080D16 !important;
         border-bottom-color: rgba(255,255,255,0.06) !important;
     }
 
     [data-bs-theme="dark"] footer {
-        background: #0a0a0a !important;
+        background: #080D16 !important;
     }
 
     [data-bs-theme="dark"] .card {
@@ -967,7 +978,7 @@ div.dt-container div.dt-info {
         [data-bs-theme="dark"] .form-control:focus,
         [data-bs-theme="dark"] .form-select:focus {
             background-color: #2a2a2a !important;
-            border-color: #17A34A !important;
+            border-color: #0F766E !important;
             color: #e2e8f0 !important;
         }
 
@@ -1033,7 +1044,7 @@ div.dt-container div.dt-info {
         [data-bs-theme="dark"] div.dt-container div.dt-search input:focus,
         [data-bs-theme="dark"] div.dt-container input.dt-input:focus {
             background: #2a2a2a !important;
-            border-color: #17A34A !important;
+            border-color: #0F766E !important;
         }
 
     [data-bs-theme="dark"] .dataTables_wrapper .dataTables_length select,
@@ -1069,8 +1080,8 @@ div.dt-container div.dt-info {
         [data-bs-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
         [data-bs-theme="dark"] div.dt-container div.dt-paging button.dt-paging-button:hover {
             background: #2a2a2a !important;
-            color: #17A34A !important;
-            border-color: #17A34A !important;
+            color: #0F766E !important;
+            border-color: #0F766E !important;
         }
 
         [data-bs-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
@@ -1133,7 +1144,7 @@ div.dt-container div.dt-info {
 
     [data-bs-theme="dark"] .book-badge-overlay {
         background: rgba(30, 30, 30, 0.95);
-        color: #1DB954;
+        color: #2DD4BF;
     }
 
     [data-bs-theme="dark"] .book-view-btn {
@@ -1174,8 +1185,8 @@ div.dt-container div.dt-info {
     }
 
     [data-bs-theme="dark"] .btn-outline-success {
-        color: #4ade80 !important;
-        border-color: #4ade80 !important;
+        color: #2DD4BF !important;
+        border-color: #2DD4BF !important;
     }
 
     [data-bs-theme="dark"] .btn-outline-danger {
@@ -1309,11 +1320,11 @@ div.dt-container div.dt-info {
     }
 
         .cart-btn:hover .cart-icon-circle {
-            background: rgba(23, 163, 74, 0.8) !important;
+            background: rgba(15, 118, 110, 0.8) !important;
         }
 
     .cart-btn:hover {
-        color: #17A34A !important;
+        color: #0F766E !important;
     }
 
 #themeToggle {
