@@ -14,11 +14,29 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnection"));
 });
 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredLength = 7;
+    options.Password.RequiredUniqueChars = 1;
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddScoped<ICatagoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/identity/account/login";
+    options.LogoutPath = "/identity/Account/Logout";
+    options.AccessDeniedPath = "/identity/Account/AccessDenied";
+    options.ExpireTimeSpan = TimeSpan.FromDays(30);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
