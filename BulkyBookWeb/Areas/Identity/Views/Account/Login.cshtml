@@ -1,52 +1,74 @@
 ﻿@model LoginVM
 
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-6 col-lg-5">
-            <div class="card shadow-sm border overflow-hidden">
-                <div class="card-header text-white py-3 px-4 text-center" style="background: linear-gradient(to right, #065f46, #282828, #191414);">
-                    <i class="bi bi-box-arrow-in-right display-4"></i>
-                    <h4 class="fw-bold mt-2 mb-1">Welcome Back</h4>
-                    <p class="mb-0 small" style="color: #1DB954;">Log in to your account</p>
-                </div>
+<div class="container py-5">
+    <div class="auth-shell mx-auto">
+        <div class="row g-0">
+            <div class="col-lg-5 d-none d-lg-flex">
+                <div class="auth-brand-panel">
+                    <div class="auth-brand-logo">
+                        <i class="bi bi-book fs-4" style="color: #1DB954;"></i>
+                        <span class="fw-bold fs-5">Bulky<span style="color:#1DB954;">Book</span></span>
+                    </div>
 
-                <div class="card-body p-5">
+                    <div class="auth-brand-body">
+                        <h2>Your next great read is one login away.</h2>
+                        <p>Pick up where you left off, track your orders, and unlock member-only pricing on every title.</p>
+                    </div>
+
+                    <ul class="auth-brand-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Curated collections across 12 categories</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Order tracking &amp; purchase history</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Bulk pricing for 50+ and 100+ orders</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="auth-form-panel">
+                    <p class="auth-eyebrow">Welcome back</p>
+                    <h3>Log in to your account</h3>
+
                     <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewData["ReturnUrl"]">
 
-                        <div asp-validation-summary="ModelOnly" class="text-bg-danger mb-3"></div>
+                        <div asp-validation-summary="ModelOnly" class="text-bg-danger rounded-3 p-2 mb-3 small"></div>
 
                         <div class="mb-3">
-                            <label asp-for="Email" class="form-label">Email</label>
-                            <input asp-for="Email" type="email" class="form-control form-control-lg" placeholder="name@example.com" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <label asp-for="Email"></label>
+                            <div class="auth-input-group">
+                                <i class="bi bi-envelope"></i>
+                                <input asp-for="Email" type="email" class="form-control form-control-lg" placeholder="name@example.com" autocomplete="email" />
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger small"></span>
                         </div>
 
                         <div class="mb-3">
-                                                      
-                            <label asp-for="Password" class="form-label">Password</label>
-                            <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Enter your password" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <label asp-for="Password"></label>
+                            <div class="auth-input-group">
+                                <i class="bi bi-lock"></i>
+                                <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Enter your password" autocomplete="current-password" />
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger small"></span>
                         </div>
 
-                        <div class="form-check mb-3">
-                            <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
-                            <label asp-for="RememberMe" class="form-check-label">Remember me?</label>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="form-check">
+                                <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+                                <label asp-for="RememberMe" class="form-check-label text-secondary" style="text-transform:none;letter-spacing:normal;font-size:0.85rem;font-weight:400;">Remember me</label>
+                            </div>
+                            <a href="#" class="text-decoration-none small fw-semibold" style="color:#17A34A;">Forgot password?</a>
                         </div>
 
-                        <button type="submit" class="btn btn-accent btn-lg w-100 mb-3">
+                        <button type="submit" class="btn btn-accent btn-lg w-100">
                             <i class="bi bi-box-arrow-in-right me-2"></i>Log In
                         </button>
-
-                        <div class="text-center">
-                            <a href="#" class="text-decoration-none">Forgot your password?</a>
-                        </div>
                     </form>
 
-                    <hr class="my-4" />
+                    <div class="auth-divider">or</div>
 
-                    <div class="text-center">
-                        <p class="mb-0">Don't have an account? <a asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="fw-semibold text-decoration-none" style="color: #17A34A;">Register now</a></p>
-                    </div>
+                    <p class="text-center mb-0 text-secondary small">
+                        Don't have an account?
+                        <a asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="fw-semibold text-decoration-none" style="color: #17A34A;">Register now</a>
+                    </p>
                 </div>
             </div>
         </div>
